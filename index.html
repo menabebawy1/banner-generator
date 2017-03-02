@@ -1,17 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery Template</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script>
-        // custom JS/jQuery
-        $(function(){
-            
-        });
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <title>html() and val() Code Along</title>
+  <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  
+  <script>
+    $(function() {
+      $('button').click(function() {
+        var color = ['red', 'green', 'yellow', 'blue', 'orange', 'purple'];
+        var color2 = ['red', 'green', 'yellow', 'blue', 'orange', 'purple'];
+        var random = Math.round(Math.random() * (color.length - 0));
+        var random2 = Math.round(Math.random() * (color2.length - 0));
+        var cercolor = color[random];
+        var cercolor2 = color2[random2];
+        var combine = "linear-gradient(to right, " + cercolor + ", " + cercolor2 + ")";
+        var name = $('#name').val();
+        var sport = $('#sport').val();
+        var userfont = $("input[type=radio][name=family]:checked").val();
+        $('#certificate').css('background', combine);
+        $('#certificate').css('font-family', userfont);
+        $('#certificate').html('This Sports Award is given to ' + name + " for being the best " + sport + " player in the NYC Yearly Tournament.");
+      });
+    });
+  </script>
+
+  <style>
+    #certificate {
+      height: fit-content;
+      width: 700px;
+      border: 15px;
+      font-size: 4em;
+      text-align: center;
+      border-style: groove;
+    }
+  </style>
 </head>
+
 <body>
-<h1>hola</h1>
+  Name: 
+  <input id="name">
+  <br> 
+  Sport: 
+<select id="sport">
+  <option value="Basketball">Basketball</option>
+  <option value="Soccer">Soccer</option>
+  <option value="Baseball">Baseball</option>
+  <option value="Handball">Handball</option>
+</select>
+  <br> 
+  Font:
+  <form id="font">
+    <input type="radio" name="family" value="lato"> Lato<br>
+    <input type="radio" name="family" value="oswald"> Oswald<br>
+    <input type="radio" name="family" value="arvo"> Arvo<br>
+  </form>
+  <br>
+  
+  <button>Generate</button>
+  <div id="certificate">
+  </div>
 </body>
+
 </html>
